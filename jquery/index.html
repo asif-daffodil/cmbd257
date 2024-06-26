@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preload" href="./js/mixed-media-gallery/mixed-media-gallery/main-css.css" as="style" />
+    <link rel="preload" href="./js/mixed-media-gallery/mixed-media-gallery/lightbox-css/cwa-lightbox.css" as="style" />
+    <link rel="stylesheet" href="./js/mixed-media-gallery/mixed-media-gallery/lightbox-css/cwa-lightbox.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./js/mixed-media-gallery/mixed-media-gallery/lightbox-js/cwa-image-lightbox.js"></script>
+    <script defer src="./js/mixed-media-gallery/mixed-media-gallery/lightbox-js/cwa-video-lightbox.js"></script>
+    <script defer src="./js/mixed-media-gallery/mixed-media-gallery/lightbox-js/cwa-media-lightbox.js"></script>
+    <script>
+        $(function () {
+            const arrImages = [
+                {
+                    src: "./images/p1.png",
+                    desc: "Image Description 1"
+                },
+                {
+                    src: "./images/p2.png",
+                    desc: "Image Description 2"
+                },
+                {
+                    src: "./images/p3.png",
+                    desc: "Image Description 3"
+                }
+            ]
+
+            const arrMedia = [
+                {
+                    src: "./images/p1.png",
+                    type: "image",
+                    desc: "Image Description"
+                },
+                {
+                    src: "./images/p2.png",
+                    type: "video",
+                    desc: "Video Description"
+                },
+                {
+                    src: "./images/p3.png",
+                    type: "iframe",
+                    desc: "40 MIN Intermediate Ashtanga Fire Flow"
+                }
+            ]
+
+            const imageSectionContainer = $('.image-section');
+            const imageGallery = $(`<div class="image-gallery"></div>`);
+            const btnOpenMediaLightbox = $('#btn-open-media-lightbox');
+
+            $.each(arrImages, function (key, image) {
+                let imageSrc = image.src;
+
+                let imageLink = $(`
+                    <a class="thumbnail-box gallery-images" href="${imageSrc}">
+                        <img src="${imageSrc}" alt="gallery-img_${key}" loading="lazy" width="200" />
+                    </a>`);
+
+                imageLink.on('click', function (e) {
+                    e.preventDefault();
+                    e.stopImmediatePropagation();
+                    imageLightbox(arrImages, key);
+                });
+
+                imageGallery.append(imageLink);
+                imageSectionContainer.append(imageGallery);
+            });
+
+            btnOpenMediaLightbox.on('click', function () {
+                mediaLightbox(arrMedia);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <section class="image-section">
+    </section>
+    <div id="myDiv" style="position: relative;">Hello World</div>
+    <button id="myBtn">My button</button>
+    <button class="btn1">My Button 1</button>
+    <button class="btn1">My Button 2</button>
+    <script>
+        $(".btn1").eq(0).on('click', function () {
+            $("#myDiv").text("Hello Universe");
+        });
+        $("#myDiv").on('mouseover', function () {
+            $("#myDiv").text("Hello World");
+        });
+        $(".btn1").eq(1).on('click', function () {
+            $("#myDiv").animate({
+                left: "+=50",
+                fontSize: "+=10px"
+            }, 500);
+        });
+        $("#myBtn").on('click', function () {
+            $("#myDiv").animate({
+                opacity: 0.25,
+                left: "+=50",
+                fontSize: "+=10px"
+            }, 500).animate({
+                opacity: 1,
+                left: "-=50",
+                fontSize: "-=10px"
+            }, 500);
+        });
+    </script>
+
+</body>
+
+</html>
