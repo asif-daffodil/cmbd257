@@ -18,12 +18,24 @@ if (isset($_POST['reg123']) && $_POST['reg123'] == "Register") {
         $errName = "Name is required";
     } elseif (!preg_match("/^[A-Za-z. ]*$/", $yname)) {
         $errName = "Only letters and white space allowed";
+    } else {
+        $crrName = $yname;
     }
 
     if (empty($age)) {
         $errAge = "Age is required";
     } elseif (!is_numeric($age)) {
         $errAge = "Invalid age";
+    } else {
+        $crrAge = $age;
+    }
+
+    if (empty($email)) {
+        $errEmail = "Email is required";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errEmail = "Invalid email format";
+    } else {
+        $crrEmail = $email;
     }
 }
 ?>
@@ -44,19 +56,22 @@ if (isset($_POST['reg123']) && $_POST['reg123'] == "Register") {
                 <h2 class="mb-4">Registration Form</h2>
                 <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
                     <div class="mb-3">
-                        <input type="text" placeholder="Your Name" name="yname" class="form-control <?= isset($errName) ? 'is-invalid' : null ?>" value="<?= $yname ?? null ?>">
+                        <input type="text" placeholder="Your Name" name="yname" class="form-control <?= isset($errName) ? 'is-invalid' : null ?>" value="<?= $crrName ?? null ?>">
                         <div class="invalid-feedback">
                             <?= $errName ?? null ?>
                         </div>
                     </div>
                     <div class="mb-3">
-                        <input type="text" placeholder="Your Age" name="age" class="form-control <?= isset($errAge) ? 'is-invalid' : null ?>" value="<?= $age ?? null ?>">
+                        <input type="text" placeholder="Your Age" name="age" class="form-control <?= isset($errAge) ? 'is-invalid' : null ?>" value="<?= $crrAge ?? null ?>">
                         <div class="invalid-feedback">
                             <?= $errAge ?? null ?>
                         </div>
                     </div>
                     <div class="mb-3">
-                        <input type="text" placeholder="Your Email" name="email" class="form-control">
+                        <input type="text" placeholder="Your Email" name="email" class="form-control <?= isset($errEmail) ? 'is-invalid' : null ?>" value="<?= $crrEmail ?? null ?>">
+                        <div class="invalid-feedback">
+                            <?= $errEmail ?? null ?>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <div class="form-check form-check-inline">
