@@ -37,6 +37,18 @@ if (isset($_POST['reg123']) && $_POST['reg123'] == "Register") {
     } else {
         $crrEmail = $email;
     }
+
+    if (empty($gender)) {
+        $errGender = "Please select your gender";
+    } else {
+        $crrGender = $gender;
+    }
+
+    if (empty($hobbies)) {
+        $errHobbies = "Please select your hobbies";
+    } else {
+        $crrHobbies = $hobbies;
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -46,6 +58,7 @@ if (isset($_POST['reg123']) && $_POST['reg123'] == "Register") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
@@ -73,7 +86,7 @@ if (isset($_POST['reg123']) && $_POST['reg123'] == "Register") {
                             <?= $errEmail ?? null ?>
                         </div>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-1 <?= isset($errGender) ? "border border-danger" : null ?> rounded py-1 position-relative">
                         <div class="form-check form-check-inline">
                             <label for="">
                                 Gender :
@@ -89,8 +102,16 @@ if (isset($_POST['reg123']) && $_POST['reg123'] == "Register") {
                                 <input type="radio" class="form-check-input" name="gender" value="Female" id="female" />Female
                             </label>
                         </div>
+                        <?php if (isset($errGender)) {  ?>
+                            <span class="fw-bold" style="font-weight: bold; -webkit-text-stroke: 0.5px red; ">
+                                <i class="bi bi-exclamation-circle position-absolute end-0 top-50 translate-middle-y text-danger fw-bold pe-2"></i>
+                            </span>
+                        <?php } ?>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 text-danger small">
+                        <?= $errGender ?? null ?>
+                    </div>
+                    <div class="mb-1 <?= isset($errHobbies) ? "border border-danger" : null ?> rounded py-1 position-relative">
                         <div class="form-check form-check-inline">
                             <label for="">
                                 Hobbies :
@@ -111,6 +132,14 @@ if (isset($_POST['reg123']) && $_POST['reg123'] == "Register") {
                                 <input type="checkbox" class="form-check-input" name="hobbies[]" value="Reading" id="Reading" />Reading
                             </label>
                         </div>
+                        <?php if (isset($errHobbies)) {  ?>
+                            <span class="fw-bold" style="font-weight: bold; -webkit-text-stroke: 0.5px red; ">
+                                <i class="bi bi-exclamation-circle position-absolute end-0 top-50 translate-middle-y text-danger fw-bold pe-2"></i>
+                            </span>
+                        <?php } ?>
+                    </div>
+                    <div class="mb-3 text-danger small">
+                        <?= $errHobbies ?? null ?>
                     </div>
                     <div class="mb-3">
                         <select name="city" class="form-select">
