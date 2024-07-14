@@ -6,6 +6,11 @@ function validate($data)
     $data = htmlspecialchars($data);
     return $data;
 }
+
+$cities = array("Dhaka", "Chittagong", "Khulna", "Rajshahi", "Sylhet", "Barisal", "Rangpur", "Comilla", "Narayanganj", "Mymensingh", "Gazipur", "Narsingdi", "Savar", "Tongi", "Jessore", "Dinajpur", "Bogra", "Saidpur", "Nawabganj", "Feni", "Pabna", "Sirajganj", "Tangail", "Noakhali", "Cox's Bazar", "Kushtia", "Gopalganj", "Faridpur", "Madaripur", "Bhola", "Laxmipur", "Jamalpur", "Sherpur", "Netrokona", "Sunamganj", "Habiganj", "Maulvibazar", "Patuakhali", "Barguna", "Jhalokati", "Pirojpur", "Brahmanbaria", "Chandpur", "Lakshmipur", "Munshiganj", "Rajbari", "Shariatpur", "Meherpur", "Chuadanga", "Jhenaidah", "Magura", "Narail", "Bagerhat", "Satkhira");
+
+
+
 if (isset($_POST['reg123']) && $_POST['reg123'] == "Register") {
     $yname = validate($_POST['yname']);
     $age = validate($_POST['age']);
@@ -48,6 +53,18 @@ if (isset($_POST['reg123']) && $_POST['reg123'] == "Register") {
         $errHobbies = "Please select your hobbies";
     } else {
         $crrHobbies = $hobbies;
+    }
+
+    if (empty($city)) {
+        $errCity = "Please select your city";
+    } else {
+        $crrCity = $city;
+    }
+
+    if (isset($crrName) && isset($crrAge) && isset($crrEmail) && isset($crrGender) && isset($crrHobbies) && isset($crrCity)) {
+        echo "<script>alert('Done')</script>";
+        $yname = $age = $email = $gender = $hobbies = $city = null;
+        $crrName = $crrAge = $crrEmail = $crrGender = $crrHobbies = $crrCity = null;
     }
 }
 ?>
@@ -94,12 +111,12 @@ if (isset($_POST['reg123']) && $_POST['reg123'] == "Register") {
                         </div>
                         <div class="form-check form-check-inline">
                             <label for="male">
-                                <input type="radio" class="form-check-input" name="gender" value="Male" id="male" />Male
+                                <input type="radio" class="form-check-input" name="gender" value="Male" id="male" <?= isset($gender) && $gender == "Male" ? "checked" : null ?> />Male
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
                             <label for="female">
-                                <input type="radio" class="form-check-input" name="gender" value="Female" id="female" />Female
+                                <input type="radio" class="form-check-input" name="gender" value="Female" id="female" <?= isset($gender) && $gender == "Female" ? "checked" : null ?> />Female
                             </label>
                         </div>
                         <?php if (isset($errGender)) {  ?>
@@ -119,17 +136,17 @@ if (isset($_POST['reg123']) && $_POST['reg123'] == "Register") {
                         </div>
                         <div class="form-check form-check-inline">
                             <label for="Singing">
-                                <input type="checkbox" class="form-check-input" name="hobbies[]" value="Singing" id="Singing" />Singing
+                                <input type="checkbox" class="form-check-input" name="hobbies[]" value="Singing" id="Singing" <?= isset($crrHobbies) && in_array("Singing", $crrHobbies) ? "checked" : null ?> />Singing
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
                             <label for="Dancing">
-                                <input type="checkbox" class="form-check-input" name="hobbies[]" value="Dancing" id="Dancing" />Dancing
+                                <input type="checkbox" class="form-check-input" name="hobbies[]" value="Dancing" id="Dancing" <?= isset($crrHobbies) && in_array("Dancing", $crrHobbies) ? "checked" : null ?> />Dancing
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
                             <label for="Reading">
-                                <input type="checkbox" class="form-check-input" name="hobbies[]" value="Reading" id="Reading" />Reading
+                                <input type="checkbox" class="form-check-input" name="hobbies[]" value="Reading" id="Reading" <?= isset($crrHobbies) && in_array("Reading", $crrHobbies) ? "checked" : null ?> />Reading
                             </label>
                         </div>
                         <?php if (isset($errHobbies)) {  ?>
@@ -142,12 +159,15 @@ if (isset($_POST['reg123']) && $_POST['reg123'] == "Register") {
                         <?= $errHobbies ?? null ?>
                     </div>
                     <div class="mb-3">
-                        <select name="city" class="form-select">
+                        <select name="city" class="form-select <?= isset($errCity) ? "is-invalid" : null ?>">
                             <option value="">Select City</option>
-                            <option value="Dhaka">Dhaka</option>
-                            <option value="Chittagong">Chittagong</option>
-                            <option value="Sylhet">Sylhet</option>
+                            <?php foreach ($cities as $ct) { ?>
+                                <option value="<?= $ct ?>" <?= isset($crrCity) && $crrCity == $ct ? "selected" : null ?>><?= $ct ?></option>
+                            <?php } ?>
                         </select>
+                        <div class="invalid-feedback">
+                            <?= $errCity ?? null ?>
+                        </div>
                     </div>
                     <input type="submit" value="Register" name="reg123" class="btn btn-primary">
                 </form>
