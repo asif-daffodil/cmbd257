@@ -1,0 +1,107 @@
+/* All User */
+a{
+    text-decoration: none;
+}
+
+    .container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin-left:88px;
+   
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+h2{
+    text-align:center;
+}
+
+input[type="text"],
+input[type="email"]{
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: flex;
+
+}
+.btn{
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    background-color: #5cb85c;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+.btn:hover{
+    background-color: #4cae4c;
+
+}
+.btn2{
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    background-color: #5cb85c;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+.btn2:hover{
+    background-color: #4cae4c;
+
+}
+/* delete button */
+.btn3{
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    background-color: #5cb85c;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+.btn4{
+    display: block;
+    width: 120px;
+    padding: 10px;
+    margin-top: 15px;
+    background-color: #5cb85c;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+.btn3:hover{
+    background-color: #4cae4c;
+
+}
+.btn4:hover{
+    background-color: #4cae4c;
+
+}
+
+.form-box{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+
