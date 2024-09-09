@@ -11,25 +11,28 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="./login.php">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="./register.php">Register</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        User
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="./update-profile.php">Update Profile</a></li>
-                        <li><a class="dropdown-item" href="./password-change.php">Change Password</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Logout</a></li>
-                    </ul>
-                </li>
+                <?php if (!isset($_SESSION['user'])) { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="./login.php">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="./register.php">Register</a>
+                    </li>
+                <?php } else { ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <?= $_SESSION['user']['name'] ?>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="./update-profile.php">Update Profile</a></li>
+                            <li><a class="dropdown-item" href="./password-change.php">Change Password</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="./logout.php">Logout</a></li>
+                        </ul>
+                    </li>
+                <?php } ?>
                 <li class="nav-item">
                     <a class="nav-link" aria-disabled="true"><i class="fa-solid fa-cart-shopping"></i></a>
                 </li>

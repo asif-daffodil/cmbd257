@@ -1,6 +1,11 @@
 <?php
 require_once '../header.php';
 require_once '../components/navbar.php';
+
+if (isset($_SESSION['user']) && $_SESSION['token'] == "cmbd257") {
+    header('location: ./');
+}
+
 if (isset($_POST['register'])) {
     $name =  secureData($_POST['name']);
     $email = secureData($_POST['email']);
