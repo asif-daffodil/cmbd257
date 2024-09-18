@@ -67,7 +67,7 @@ if (isset($_POST['register'])) {
 <script>
     document.querySelector('input[name="showPassword"]').addEventListener('change', () => {
         const password = document.querySelector('input[name="password"]');
-        if (this.checked) {
+        if (event.target.checked) {
             password.type = 'text';
         } else {
             password.type = 'password';

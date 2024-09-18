@@ -26,6 +26,9 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="./update-profile.php">Update Profile</a></li>
                             <li><a class="dropdown-item" href="./password-change.php">Change Password</a></li>
+                            <?php if ($_SESSION['user']['role'] == "admin") { ?>
+                                <li><a class="dropdown-item" href="../admin/">Admin</a></li>
+                            <?php } ?>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
