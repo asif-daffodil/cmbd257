@@ -29,6 +29,7 @@ function secureData($data)
             "closeButton": true,
         }
     </script>
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <body>

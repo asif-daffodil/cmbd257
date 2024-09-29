@@ -16,7 +16,7 @@
             </ul>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Orders</a>
+            <a class="nav-link" href="./orders.php">Orders</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">Settings</a>

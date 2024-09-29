@@ -9,7 +9,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="./">Home</a>
                 </li>
                 <?php if (!isset($_SESSION['user'])) { ?>
                     <li class="nav-item">
@@ -37,7 +37,7 @@
                     </li>
                 <?php } ?>
                 <li class="nav-item">
-                    <a class="nav-link" aria-disabled="true"><i class="fa-solid fa-cart-shopping"></i></a>
+                    <a class="nav-link" href="./cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
                 </li>
             </ul>
         </div>
