@@ -30,6 +30,9 @@
                                 <li><a class="dropdown-item" href="../admin/">Admin</a></li>
                             <?php } ?>
                             <li>
+                                <a class="dropdown-item" href="my-orders.php">My Orders</a>
+                            </li>
+                            <li>
                                 <hr class="dropdown-divider">
                             </li>
                             <li><a class="dropdown-item" href="./logout.php">Logout</a></li>

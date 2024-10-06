@@ -12,7 +12,6 @@ if (isset($_POST['updateStatus'])) {
     }
 }
 ?>
-
 <div class="panel">
     <?php require_once "./components/slidebar.php" ?>
     <div class="main-content">
